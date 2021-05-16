@@ -5,7 +5,7 @@ function NavTabs(props) {
   const tabs = ['Home', 'Post', 'Login'];
   return (
       <header> 
-    <ul className="nav nav-tabs flex-row space-between">
+    <ul className="nav nav-tabs">
       {tabs.map(tab => (
         <li className="nav-item" key={tab}>
           <a

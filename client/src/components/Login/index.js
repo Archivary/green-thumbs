@@ -15,7 +15,7 @@ function Login() {
 
     return (
       <section >
-          <h2>Welcome to GREEN THUMB!</h2>
+          <h2>Welcome!</h2>
           <h3>Your favorite website to browse local plants and learn about plant care.</h3>
           <div> 
             <img
@@ -27,16 +27,21 @@ function Login() {
             <div id="id01">
             
             <form >
-
+                
                 <div className="container">
+                <br></br>
+                <br></br>  
                 <label htmlFor="uname"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="uname" required/>
-
+                <br></br>
+                <br></br>
                 <label htmlFor="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required/>
-                    
+                <br></br>
+                <br></br>   
                 <button type="submit" onClick={loggedin}>Login</button>
-   
+                <br></br>
+                <br></br>  
                 </div>
             </form>
             </div>
