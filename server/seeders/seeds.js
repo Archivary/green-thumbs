@@ -1,3 +1,6 @@
+cnost db = require('../config/connection');
+const { Comment, Plant, Post, User } = require('../models');
+
 // Okra
 // Image
 // Type: Fruit
