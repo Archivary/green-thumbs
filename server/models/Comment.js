@@ -1,50 +1,27 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-class Comment extends Model { }
-
-Comment.init(
+const Comment = new Schema(
     {
-        // define an id column
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+        commentText: {
+            type: String,
+            required: true,
+            maxlength: 280
         },
-        // define a comment column
-        comment_text: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            // this means the comment must be at least five characters long
-            validate: {
-                len: [5]
-            }
+        username: {
+            type: String,
+            required: true
         },
-        // define a username column
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        // define a post column
-        post_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'post',
-                key: 'id'
-            }
+        createdAt: {
+            type: date,
+            default: Date.now,
+            get: timestamp => dateFormat(timestamp)
         }
     },
     {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'comment'
+        toJSON: {
+            getters: true
+        }
     }
 );
 
