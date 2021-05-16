@@ -7,7 +7,7 @@ import NavTabs from './NavTabs';
 
 function Page() {
     // Using useState, set the default value for currentPage to 'Home'
-    const [currentPage, handlePageChange] = useState('Home');
+    const [currentPage, handlePageChange] = useState('Login');
   
     // The renderPage method uses a switch statement to render the appropriate current page
     const renderPage = () => {
@@ -19,17 +19,19 @@ function Page() {
         case 'Login':
           return <Login />;
         default:
-          return <Home />;
+          return <Login />;
       }
     };
   
     return (
+      <header> 
       <div>
         {/* Pass the state value and the setter as props to NavTabs */}
         <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
         {/* Call the renderPage function passing in the currentPage */}
         <div>{renderPage(currentPage)}</div>
       </div>
+      </header>
     );
   }
   
