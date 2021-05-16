@@ -1,4 +1,4 @@
-cnost db = require('../config/connection');
+const db = require('../config/connection');
 const { Comment, Plant, Post, User } = require('../models');
 
 // Okra
