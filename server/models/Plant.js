@@ -32,10 +32,20 @@ const plantSchema = new Schema(
             required: true,
             unique: false,
             trim: true
+        },
+        image: [imageSchema],
+        comments: [commentSchema]
+    },
+    {
+        toJSON: {
+            getters: true
         }
-
     }
 );
+
+plantSchema.virtual('commentCount').get(function () {
+    return this.comments.length;
+});
 
 const Plant = model('Plant', plantSchema);
 
