@@ -1,76 +1,41 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
+const commentSchema = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
 
-// create our Post model & add voting
-class Post extends Model {
-    static upvote(body, models) {
-        return models.Vote.create({
-            user_id: body.user_id,
-            post_id: body.post_id
-        }).then(() => {
-            return Post.findOne({
-                where: {
-                    id: body.post_id
-                },
-                attributes: [
-                    'id',
-                    'post_url',
-                    'title',
-                    'created_at',
-                    [
-                        sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
-                        'vote_count'
-                    ]
-                ],
-                include: [
-                    {
-                        model: models.Comment,
-                        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                        include: {
-                            model: models.User,
-                            attributes: ['username']
-                        }
-                    }
-                ]
-            });
-        });
-    }
-}
-
-// create fields/columns for Post model
-Post.init(
+const postSchema = new Schema(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+        postText: {
+            type: String,
+            required: 'You need to leave a plant post!',
+            minlength: 1,
+            maxlength: 280
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: timestamp => dateFormat(timestamp)
         },
-        post_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isURL: true
-            }
+        username: {
+            type: String,
+            required: true
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        }
+        comments: [commentSchema]
     },
     {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'post'
+        toJSON: {
+            getters: true
+        }
     }
 );
 
+postSchema.virtual('commentCount').get(function () {
+    return this.comments.length;
+});
+
+const Post = model('Post', postSchema);
+
 module.exports = Post;
+
+
+
+
