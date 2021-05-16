@@ -35,7 +35,7 @@ const plantSchema = new Schema(
         }
 
     }
-)
+);
 
 const Plant = model('Plant', plantSchema);
 
