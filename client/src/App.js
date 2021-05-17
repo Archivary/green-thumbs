@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios'; // make http requests
+import { Image } from 'cloudinary-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
@@ -7,6 +8,7 @@ import PageContent from './components/PageContent';
 
 function App() {
   const [imageSelected, setImageSelected] = useState('');
+  //const [url, setUrl] = useState('');
 
   const uploadImage = () => {
     //console.log(files[0]);
@@ -34,7 +36,17 @@ function App() {
           }}
         />
         <button onClick={uploadImage}> Upload Image</button>
+        <Image
+          style={{ width: 200 }}
+          cloudName='green-thumbs'
+          publicId='https://res.cloudinary.com/green-thumbs/image/upload/v1621291707/dmddwt512mazxwgqezcv.jpg'
+        />
       </div>
+
+      {/* <div>
+        <h1>Uploaded image will be displayed here</h1>
+        <img src={url} alt='description' />
+      </div> */}
 
       <main>
         <PageContent></PageContent>
