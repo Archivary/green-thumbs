@@ -2,41 +2,56 @@ const { Schema, model } = require('mongoose');
 
 const plantSchema = new Schema(
     {
-        plantname: {
+        // categories: {
+        //     // moved to category.js file
+        //     type: String,
+        //     required: true,
+        //     unique: false,
+        //     trim: true,
+        // },
+        name: {
             type: String,
             required: true,
             unique: true,
             trim: true
         },
-        planttype: {
+        description: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true
+        },
+        image: {
+            // Cloudinary string
+            type: String,
+            required: true,
+            unique: true,
+            trim: true
+        },
+        maintenance: {
             type: String,
             required: true,
             unique: false,
             trim: true
-        },
-        season: {
-            // which type to choose for seasons?
-            type: String,
-            required: true,
-            unique: false,
-            trim: true,
-        },
-        highmaintenance: {
-            // which type to choose for low or high maintenance?
-            type: Boolean,
-            required: true,
         },
         waterneeds: {
-            // which type to choose for water needs?
             type: String,
             required: true,
             unique: false,
             trim: true
         },
-        // upload photos to cloudinary and then in seed file, upload link to cloudinary
-        //shop shop
-        // image: [imageSchema],
-        comments: [commentSchema]
+        // return many comments per user
+        comments: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Comment'
+            }
+        ],
+        // return one category per plant
+        categories: {
+            type: Schema.Types.ObjectId,
+            ref: 'Category'
+        },
     },
     {
         toJSON: {
@@ -47,6 +62,10 @@ const plantSchema = new Schema(
 
 plantSchema.virtual('commentCount').get(function () {
     return this.comments.length;
+});
+
+plantSchema.virtual('categoryCount').get(function () {
+    return this.category.length;
 });
 
 const Plant = model('Plant', plantSchema);
