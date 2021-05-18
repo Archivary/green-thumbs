@@ -33,7 +33,9 @@ const plantSchema = new Schema(
             unique: false,
             trim: true
         },
-        image: [imageSchema],
+        // upload photos to cloudinary and then in seed file, upload link to cloudinary
+        //shop shop
+        // image: [imageSchema],
         comments: [commentSchema]
     },
     {
