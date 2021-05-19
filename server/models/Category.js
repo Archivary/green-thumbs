@@ -2,18 +2,13 @@ const { Schema, model } = require('mongoose');
 
 const categorySchema = new Schema(
     {
-        categories: {
+        name: {
             type: String,
             required: true,
             unique: false,
             trim: true,
         },
     },
-    {
-        toJSON: {
-            getters: true
-        }
-    }
 );
 
 
