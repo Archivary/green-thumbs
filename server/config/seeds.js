@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { Plant, Category } = require('./models');
+const { Plant, Category } = require('../models');
 
 // const db = require('./connection');
 //const { User, Product, Category } = require('../models');
