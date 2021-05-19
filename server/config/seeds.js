@@ -1,4 +1,4 @@
-const db = require('/config/connection');
+const db = require('./connection');
 const { Plant, Category } = require('./models');
 
 // const db = require('./connection');
