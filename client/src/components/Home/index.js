@@ -5,37 +5,39 @@ import plant3 from "../../assets/plant3.jpg";
 import plant4 from "../../assets/plant4.jpg";
 
 function Home() {
+    const plants = [
+        {type: "Poppy", image: plant1, season: "Summer" },
+        {type: "Chamomile", image: plant2, season: "Spring" },
+        {type: "Fall Folliage", image: plant3, season: "Fall"},
+        {type: "Kale", image: plant4, season: "Winter" }
+    ]
     return (
       <section >
-          <h2>Search for Plants</h2>
-          <div> 
-              <h3>Poppy</h3>
+          <br></br>
+          <div class="dropdown">
+          <button class="dropbtn"> Search for Plants by Season</button>
+          <div class="dropdown-content">
+                <a href="#">Spring</a>
+                <a href="#">Summer</a>
+                <a href="#">Fall</a>
+                <a href="#">Winter </a>
+            </div>
+          </div>
+
+          <div className="homeGrid"> 
+          <ul> 
+            {plants.map((plant) => (
+                <li> 
+            <h3>{plant.type}</h3>
             <img
-                src={plant1}
-                alt={"headshot"}
-                className="img-thumbnail mx-1"/>
-                </div>
-            <div>    
-            <h3>Chamomile</h3> 
-            <img
-                src={plant2}
-                alt={"headshot"}
-                className="img-thumbnail mx-1"/>
-                </div>
-            <div> 
-            <h3>Fall Folliage</h3>   
-            <img
-                src={plant3}
-                alt={"headshot"}
-                className="img-thumbnail mx-1"/>
-                </div>
-            <div> 
-            <h3>Kale</h3>
-            <img
-                src={plant4}
-                alt={"headshot"}
-                className="img-thumbnail mx-1"/>
-                </div>
+                src={plant.image}
+                alt={plant.type}
+                className="img"/>
+            </li>
+            ))}
+            </ul>
+           </div>
+
       </section>
     );
   }
