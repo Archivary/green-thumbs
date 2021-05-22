@@ -41,8 +41,7 @@
 
 ## Usage
 
-    The app is deployed and is live at
-    [Heroku](https://tranquil-falls-18471.herokuapp.com/)
+    The app is deployed and is live at Heroku @ https://tranquil-falls-18471.herokuapp.com/
 
 ## License
 
