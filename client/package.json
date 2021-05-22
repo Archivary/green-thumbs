@@ -1,6 +1,9 @@
 {
   "name": "green-thumb",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.15.4"
+  },
   "private": true,
   "type": "module",
   "proxy": "http://localhost:3001/",
@@ -34,7 +37,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    // "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "webpack": "webpack --watch",
