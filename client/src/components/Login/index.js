@@ -9,7 +9,17 @@ import Auth from '../../utils/auth';
 function Login() {
 
 const [login, { error }] = useMutation(LOGIN_USER);
-const [formState, setFormState] = useState({ email: '', password: '' });
+const [formState, setFormState] = useState({ username: '', password: '' });
+
+ // update state based on form input changes
+ const handleChange = event => {
+  const { name, value } = event.target;
+
+  setFormState({
+    ...formState,
+    [name]: value
+  });
+};
 
     // submit form
     const handleFormSubmit = async event => {
@@ -27,7 +37,7 @@ const [formState, setFormState] = useState({ email: '', password: '' });
     
         // clear form values
         setFormState({
-          email: '',
+          username: '',
           password: ''
         });
       };
@@ -51,11 +61,19 @@ const [formState, setFormState] = useState({ email: '', password: '' });
                 <br></br>
                 <br></br>  
                 <label htmlFor="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required />
+                <input type="username" placeholder="Enter Username" 
+                name="username"
+                id="username"
+                value={formState.username}
+                onChange={handleChange}/>
                 <br></br>
                 <br></br>
                 <label htmlFor="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required/>
+                <input type="password" placeholder="Enter Password" 
+                name="password"
+                id="password"
+                value={formState.password}
+                onChange={handleChange}/>
                 <br></br>
                 <br></br>   
                 <button type="submit" >Login</button>
