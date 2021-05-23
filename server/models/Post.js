@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment');
+// const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema(
@@ -19,8 +19,8 @@ const postSchema = new Schema(
             type: String,
             required: true
         },
-        comments: [commentSchema]
-    },
+    //     comments: [commentSchema]
+     },
     {
         toJSON: {
             getters: true
@@ -28,9 +28,9 @@ const postSchema = new Schema(
     }
 );
 
-postSchema.virtual('commentCount').get(function () {
-    return this.comments.length;
-});
+// postSchema.virtual('commentCount').get(function () {
+//     return this.comments.length;
+// });
 
 const Post = model('Post', postSchema);
 

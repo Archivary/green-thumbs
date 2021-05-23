@@ -16,8 +16,8 @@ const resolvers = {
       },  
 
   Mutation: {
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
       if (!user) {
         throw new AuthenticationError('That user does not exist');
@@ -34,7 +34,8 @@ const resolvers = {
     },
 
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      console.log(args);
+      const user = await User.create({...args});
       const token = signToken(user);
 
       return { token, user };

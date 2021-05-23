@@ -1,18 +1,25 @@
 import React from 'react';
+import Auth from '../../utils/auth';
 
 function Post() {
 
-    function addPlant(){
+    // function addPlant(){
+    // }
+        const loggedIn = Auth.loggedIn();
+
         // Go to homepage
 // window.onclick = function(event) {
 //     if (event.target == modal) {
 //         modal.style.display = "none";
 //     }
 // }
-  }
+  
 
     return (
         <section id="addPlant">
+
+        {loggedIn && (
+                <div> 
             <h2>Post a Plant</h2>
 
             <div className="container">
@@ -60,9 +67,17 @@ function Post() {
                 <br></br>
             </form>
             </div>
-            <button type="submit" onClick={addPlant}>Add Plant</button>
+            
+            {/* <button type="submit" onClick={addPlant}>Add Plant</button> */}
+            <button type="submit">Add Plant</button>
+
             <br></br>
             <br></br>
+            </div>
+             )}
+            <div>
+                <h3>Must Log in to Post!</h3>
+            </div> 
         </section>
         
     );

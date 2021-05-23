@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Home from './Home';
 import Login from './Login';
+import Signup from './Signup';
 import Post from './Post';
 import NavTabs from './NavTabs';
 
@@ -18,6 +19,8 @@ function Page() {
           return <Post />;
         case 'Login':
           return <Login />;
+        case 'Signup':
+          return <Signup />;
         default:
           return <Login />;
       }
@@ -28,6 +31,7 @@ function Page() {
       <div>
         {/* Pass the state value and the setter as props to NavTabs */}
         <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
+        {/* <Signup/> */}
         {/* Call the renderPage function passing in the currentPage */}
         <div>{renderPage(currentPage)}</div>
       </div>

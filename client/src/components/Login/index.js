@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import homePlant from "../../assets/homePlant.jpg";
+import { useMutation } from '@apollo/react-hooks';
+import { LOGIN_USER } from '../../utils/mutations';
+
+import Auth from '../../utils/auth';
 
 
 function Login() {
-    function loggedin(){
-        // Go to homepage
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
-  }
-  
+
+const [login, { error }] = useMutation(LOGIN_USER);
+const [formState, setFormState] = useState({ email: '', password: '' });
+
+    // submit form
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+    
+        try {
+          const { data } = await login({
+            variables: { ...formState }
+          });
+    
+          Auth.login(data.login.token);
+        } catch (e) {
+          console.error(e);
+        }
+    
+        // clear form values
+        setFormState({
+          email: '',
+          password: ''
+        });
+      };
 
     return (
       <section >
@@ -26,24 +45,26 @@ function Login() {
                 
             <div id="id01">
             
-            <form >
+            <form onSubmit={handleFormSubmit}>
                 
                 <div className="container">
                 <br></br>
                 <br></br>  
                 <label htmlFor="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required/>
+                <input type="text" placeholder="Enter Username" name="uname" required />
                 <br></br>
                 <br></br>
                 <label htmlFor="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required/>
                 <br></br>
                 <br></br>   
-                <button type="submit" onClick={loggedin}>Login</button>
+                <button type="submit" >Login</button>
                 <br></br>
                 <br></br>  
                 </div>
             </form>
+            <button type="submit" onClick={event =>  window.location.href='#signup'} >New User?</button>
+            {error && <div>Login failed</div>}
             </div>
 
             

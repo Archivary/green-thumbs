@@ -41,12 +41,12 @@ const plantSchema = new Schema(
             trim: true
         },
         // return many comments per user
-        comments: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Comment'
-            }
-        ],
+        // comments: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Comment'
+        //     }
+        // ],
         // return one category per plant
         categories: {
             type: Schema.Types.ObjectId,
