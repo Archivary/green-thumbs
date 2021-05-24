@@ -25,15 +25,15 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PLANT = gql`
-  mutation addPlant($id: ID!) {
-    addPlant(plantId: $id) {
+  mutation addPlant($name: String!) {
+    addPlant(name: $name) {
       _id
       name
       description
       image
       maintenance
       waterneeds
-      categories
+      season 
     }
   }
 `;

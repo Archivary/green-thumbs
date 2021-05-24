@@ -4,17 +4,18 @@ const typeDefs = gql`
   type User {
     _id: ID
     username: String
-    bookCount: Int
     savedPlants: [Plant]
   }
   type Query {
     me: User
     users: [User]
     user(username: String!): User
+    plants(username: String!): [Plant]
+    plant(_id: ID!): Plant
   }
   type Plant {
-      plantId: String
-      type: String
+      _id: ID
+      name: String
       season: String
       maintenance: String
       image: String
@@ -27,7 +28,7 @@ const typeDefs = gql`
   type Mutation {
     login(username: String!, password: String!): Auth
     addUser(username: String!, password: String!): Auth
-    savePlant(type: String!, season: String!, plantId: ID!, maintenance: String!, waterneeds: String!): User
+    addPlant(name: String!, season: String!, maintenance: String!, image: String!, waterneeds: String!): Plant
     removePlant(plantId: String!): User
   }
 `;

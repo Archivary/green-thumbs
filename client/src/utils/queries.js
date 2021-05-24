@@ -18,7 +18,7 @@ export const QUERY_PLANT = gql`
       image
       maintenance
       waterneeds
-      categories
+      season
     }
   }
 `;

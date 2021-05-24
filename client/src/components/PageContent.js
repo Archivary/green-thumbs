@@ -22,7 +22,7 @@ function Page() {
         case 'Signup':
           return <Signup />;
         default:
-          return <Login />;
+          return <Signup />;
       }
     };
   

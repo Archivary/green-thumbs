@@ -11,32 +11,32 @@ const plantSchema = new Schema(
         // },
         name: {
             type: String,
-            required: true,
+            // required: true,
             unique: true,
             trim: true
         },
         description: {
             type: String,
-            required: true,
+            // required: true,
             unique: true,
             trim: true
         },
         image: {
             // Cloudinary string
             type: String,
-            required: true,
+            // required: true,
             unique: true,
             trim: true
         },
         maintenance: {
             type: String,
-            required: true,
+            // required: true,
             unique: false,
             trim: true
         },
         waterneeds: {
             type: String,
-            required: true,
+            // required: true,
             unique: false,
             trim: true
         },
@@ -48,25 +48,26 @@ const plantSchema = new Schema(
         //     }
         // ],
         // return one category per plant
-        categories: {
-            type: Schema.Types.ObjectId,
-            ref: 'Category'
+        season: {
+            type: String,
+            // ref: 'Category'
         },
+        
     },
-    {
-        toJSON: {
-            getters: true
-        }
-    }
+    // {
+    //     toJSON: {
+    //         getters: true
+    //     }
+    // }
 );
 
-plantSchema.virtual('commentCount').get(function () {
-    return this.comments.length;
-});
+// plantSchema.virtual('commentCount').get(function () {
+//     return this.comments.length;
+// });
 
-plantSchema.virtual('categoryCount').get(function () {
-    return this.category.length;
-});
+// plantSchema.virtual('categoryCount').get(function () {
+//     return this.category.length;
+// });
 
 const Plant = model('Plant', plantSchema);
 

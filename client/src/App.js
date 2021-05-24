@@ -28,18 +28,6 @@ const client = new ApolloClient({
   link: authLink.concat(link),
 });
 
-// const client = new ApolloClient({
-//   request: operation => {
-
-//     operation.setContext({
-//       headers: {
-//         authorization: token ? `Bearer ${token}` : ''
-//       }
-//     });
-//   },
-//   uri: '/graphql'
-// });
-
 
 function App() {
   return (

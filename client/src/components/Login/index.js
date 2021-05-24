@@ -81,7 +81,6 @@ const [formState, setFormState] = useState({ username: '', password: '' });
                 <br></br>  
                 </div>
             </form>
-            <button type="submit" onClick={event =>  window.location.href='#signup'} >New User?</button>
             {error && <div>Login failed</div>}
             </div>
 
