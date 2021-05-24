@@ -1,4 +1,8 @@
 const { Schema, model } = require('mongoose');
+<<<<<<< HEAD
+// const commentSchema = require('./Comment');
+=======
+>>>>>>> feature/experimental
 const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema(
@@ -18,11 +22,16 @@ const postSchema = new Schema(
             type: String,
             required: true
         },
+<<<<<<< HEAD
+    //     comments: [commentSchema]
+     },
+=======
         comments: [{
             type: Schema.Types.ObjectId,
             ref: 'Comment'
         }]
     },
+>>>>>>> feature/experimental
     {
         toJSON: {
             getters: true
@@ -30,6 +39,13 @@ const postSchema = new Schema(
     }
 );
 
+<<<<<<< HEAD
+// postSchema.virtual('commentCount').get(function () {
+//     return this.comments.length;
+// });
+
+=======
+>>>>>>> feature/experimental
 const Post = model('Post', postSchema);
 
 module.exports = Post;

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Plant} = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -12,12 +12,29 @@ const resolvers = {
         }
   
         throw new AuthenticationError('Not logged in');
+    },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+
+    },
+    plants: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Plant.find(params).sort();
+    },
+    plants: async (parent, { _id }) => {
+      return Plant.findOne({ _id });
     }
       },  
 
   Mutation: {
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
       if (!user) {
         throw new AuthenticationError('That user does not exist');
@@ -34,32 +51,33 @@ const resolvers = {
     },
 
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      console.log(args);
+      const user = await User.create({...args});
       const token = signToken(user);
 
       return { token, user };
     },
 
-    savePlant: async (parent, { input }, context) => {
-        if (context.user) {
-            const updatedUser = await User.findByIdAndUpdate(
-              { _id: context.user._id },
-              { $addToSet: { savedPlant: input } },
+    addPlant: async (parent, { input }, context) => {
+        if (context.plant) {
+            const updatedPlant = await Plant.findByIdAndUpdate(
+              { _id: context.plant._id },
+              { $addToSet: { addPlant: input } },
               { new: true }
             );
-            return updatedUser;
+            return updatedPlant;
           }
           throw new AuthenticationError('You need to be logged in!')
       },
 
     removePlant: async (parent, args, context) => {
-        if (context.user) {
-          const updatedUser = await User.findOneAndUpdate(
-            { _id: context.user._id },
+        if (context.plant) {
+          const updatedPlant = await Plant.findOneAndUpdate(
+            { _id: context.plant._id },
             { $pull: { savedPlants: { bookId: args.plantId } } },
             { new: true }
           )
-          return updatedUser;
+          return updatedPlant;
         }
   
         throw new AuthenticationError('You need to be logged in!');

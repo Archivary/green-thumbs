@@ -4,11 +4,15 @@ const categorySchema = new Schema(
     {
         name: {
             type: String,
-            required: true,
+            // required: true,
             unique: false,
             trim: true,
         },
+<<<<<<< HEAD
+    }
+=======
     },
+>>>>>>> feature/experimental
 );
 
 
