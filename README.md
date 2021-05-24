@@ -1,4 +1,4 @@
-# GREEN-THUMB
+# Green Thumbs Gardening App
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
@@ -16,13 +16,14 @@
 
 ## Description
 
-    This project is a simple companion app with only what you need to know about plants you can grow.
+This project is a simple companion app with only what you need to know about plants you can grow.
 
-    Motivation:
-    we don’t know how to garden. Existing resources are intimidatingly over-detailed and don’t have social feedback.
+Motivation:
+We don’t know how to garden. Existing resources are intimidatingly over-detailed and don’t have social feedback.
 
-    As a user I want to:
-    find plants I can grow depending on the season and level of maintenance required.
+As a user I want to:
+
+- Find plants I can grow depending on the season and level of maintenance required.
 
 ## Homepage
 
@@ -34,27 +35,27 @@
 
 ## Installation
 
-    Clone the project repository from GitHub and install all the dependencies using the command
-        npm install
-    Launch the react app locally at http://localhost:3001/ in your browser using the command
-        npm start
+Clone the project repository from GitHub and install all the dependencies using the command
+npm install
+Launch the react app locally at http://localhost:3001/ in your browser using the command
+npm start
 
 ## Usage
 
-    The app is deployed and is live on Heroku @ https://tranquil-falls-18471.herokuapp.com/
+The app is deployed and is live on Heroku @ https://tranquil-falls-18471.herokuapp.com/
 
 ## License
 
-    This repository is licensed under the 'MIT License'.
-    Refer to https://opensource.org/licenses/MIT for complete license terms.
+This repository is licensed under the 'MIT License'.
+Refer to https://opensource.org/licenses/MIT for complete license terms.
 
 ## Contributing
 
-    This project is not accepting contributions but if you send a pull request, it could be accepted under the license terms of the MIT license.
+This project is not accepting contributions but if you send a pull request, it could be accepted under the license terms of the MIT license.
 
 ## Tests
 
-    No tests included.
+No tests included.
 
 ## Questions
 
