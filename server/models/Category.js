@@ -8,7 +8,11 @@ const categorySchema = new Schema(
             unique: false,
             trim: true,
         },
+<<<<<<< HEAD
     }
+=======
+    },
+>>>>>>> feature/experimental
 );
 
 

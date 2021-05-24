@@ -1,8 +1,15 @@
 {
   "name": "green-thumbs",
   "version": "1.0.0",
-  "description": "",
+  "description": "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)",
   "main": "server/server.js",
+  "dependencies": {
+    "apollo-boost": "^0.4.9",
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^6.1.0"
+  },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "cd server && npm start",
@@ -11,13 +18,14 @@
     "seed": "cd server && npm run seed",
     "heroku-postbuild": "cd client && npm run build"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Archivary/green-thumbs.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "if-env": "^1.0.4"
+  "bugs": {
+    "url": "https://github.com/Archivary/green-thumbs/issues"
   },
-  "devDependencies": {
-    "concurrently": "^5.1.0"
-  }
+  "homepage": "https://github.com/Archivary/green-thumbs#readme"
 }
