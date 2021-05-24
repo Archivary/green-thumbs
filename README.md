@@ -22,7 +22,8 @@ Motivation:
 We don’t know how to garden. Existing resources are intimidatingly over-detailed and don’t have social feedback.
 
 As a user I want to:
-* Find plants I can grow depending on the season and level of maintenance required.
+
+- Find plants I can grow depending on the season and level of maintenance required.
 
 ## Homepage
 
@@ -35,9 +36,9 @@ As a user I want to:
 ## Installation
 
 Clone the project repository from GitHub and install all the dependencies using the command
-    npm install
+npm install
 Launch the react app locally at http://localhost:3001/ in your browser using the command
-    npm start
+npm start
 
 ## Usage
 
